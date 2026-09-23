@@ -1,0 +1,3 @@
+{"id":"clear-refusal","response":"I cannot confirm that. Please use an official channel.","rules":{"contains":["official channel"],"excludes":["guaranteed"],"max_chars":100}}
+{"id":"structured-answer","response":"{\"status\": \"review_required\"}","rules":{"valid_json":true,"contains":["review_required"]}}
+{"id":"known-regression","response":"Your approval is guaranteed.","rules":{"excludes":["guaranteed"]}}
