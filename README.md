@@ -2,7 +2,9 @@
 
 [![Python checks](https://github.com/DrKaiqueDias/llm-eval-lite/actions/workflows/tests.yml/badge.svg)](https://github.com/DrKaiqueDias/llm-eval-lite/actions)
 
-An offline regression-checking CLI for model responses. Turn simple output requirements into repeatable checks without calling a model or sending data to a service.
+A small Python tool for checking saved model responses against explicit rules.
+
+In AI review, some requirements are simple enough to check automatically: a required term, a length limit or valid JSON. This project handles those checks so they can be repeated whenever a response changes. It runs locally and does not call a model.
 
 ## Try it
 
@@ -39,12 +41,13 @@ Requires **Python 3.11+**. Uses only the standard library; no installation or AP
 python -m unittest discover -v
 ```
 
-CI runs tests on Python 3.11, 3.12 and 3.13. Examples are synthetic. This is a compact portfolio project, not a claim of production deployment.
+Tests run on Python 3.11, 3.12 and 3.13 through GitHub Actions. The sample data is synthetic.
 
 ## Design choices
 
-Small pure functions hold the core logic; the CLI handles files, JSON output and exit codes. Invalid inputs fail explicitly instead of silently changing the data.
+Rules are deterministic and checked locally. The report keeps case IDs and outcomes, while response text stays out of the output. Unknown rules and duplicate IDs produce an error, rather than an incomplete evaluation.
 
 ## License
 
 MIT. Maintained by [Kaique Dias](https://github.com/DrKaiqueDias).
+
